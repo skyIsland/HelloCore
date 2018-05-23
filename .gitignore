@@ -1,0 +1,7 @@
+/Src/.vs
+/Src/packages
+/Src/Log/
+**/bin
+**/obj
+**/Log
+*.pubxml

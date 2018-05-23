@@ -1,0 +1,75 @@
+﻿@using Sky.Models
+
+@{
+    ViewData["Title"] = "画廊";
+    List<Belle> list = ViewBag.List ?? new List<Belle>();
+}
+
+@section header
+{
+    <style>
+        .card {
+            width: 30%;
+            background-color: white;
+            margin-bottom: 25px;
+            /*水平阴影的位置 垂直阴影的位置 模糊距离 阴影尺寸 阴影颜色 外部阴影改为内部阴影*/
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .card img {
+            opacity: 0.4;
+            height: 555px;
+        }
+
+        .card img:hover {
+            opacity: 1;
+        }
+
+        .containers {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        /* 一定要放在后面! */
+
+        @@media only screen and (max-width: 500px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+}
+@{
+    foreach (var item in list)
+    {
+        <div class="card">
+            <img src="@item.ImageUrl" alt="" style="width:100%;">
+            <div class="containers">
+                <p>
+                    @item.Title.Trim()
+                </p>
+            </div>
+        </div>
+    }
+}
+@*@{
+    foreach (var item in list)
+    {
+        var data = item.ImageUrls;
+        foreach (var itemImageUrl in data)
+        {
+            <div class="card">
+                <img src="@itemImageUrl.Split("-")[1]" alt="" style="width:100%;">
+                <div class="containers">
+                    <p>
+                        @(item.Title + data.IndexOf(itemImageUrl) + 1)
+                    </p>
+                </div>
+            </div>
+        }
+        
+    }
+}*@
+
