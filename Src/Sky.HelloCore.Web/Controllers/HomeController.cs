@@ -44,10 +44,12 @@ namespace Sky.HelloCore.Web.Controllers
         /// 画廊
         /// </summary>
         /// <returns></returns>
-        public IActionResult Gallery()
+        public IActionResult Gallery(int cid = 4,int page = 0)
         {
             var factory = new DouBan();
-            ViewBag.List = factory.GetListBelle(null,4);
+            string requestUrl = null;
+            if (page > 0) requestUrl = $"https://www.dbmeinv.com/dbgroup/show.htm?cid={cid}&pager_offset={page}";
+            ViewBag.List = factory.GetListBelle(requestUrl, cid);
             return View();
         }
 
