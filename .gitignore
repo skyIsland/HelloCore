@@ -5,3 +5,4 @@
 **/obj
 **/Log
 *.pubxml
+/Src/Sky.HelloCore.Web/Properties/PublishProfiles

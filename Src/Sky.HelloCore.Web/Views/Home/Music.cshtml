@@ -1,0 +1,90 @@
+﻿@model List<Sky.Models.KwMusic>
+@{
+    ViewData["Title"] = "KwMusicDown";
+}
+@section header
+    {
+    <style>
+
+        @@media screen and (max-width: 400px) {
+            #musicName, .btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+}
+<div class="row" style="padding-top: 50px;">
+    <div class="col-md-6">
+        <form action="@Url.Action("Music")" method="post" class="form-horizontal">
+            <div class="form-group">
+                <input type="hidden" name="pageNo" value="@(ViewBag.PageNo??0)" />
+                <label for="musicName" class="col-md-2 col-xs-12 col-sm-3 control-label">歌曲名称:</label>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <input type="text" class="form-control" id="musicName" name="musicName" placeholder="歌曲名称">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <input type="submit" class="btn btn-info" value="搜索">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">#</th>
+                    <th style="width: 30%;">歌曲名称</th>
+                    <th style="width: 20%;">专辑名称</th>
+                    <th style="width: 20%;">歌手名称</th>
+                    <th style="width: 25%;">下载地址</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model == null || Model.Count == 0)
+                    {
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>@@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@@twitter</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        var count = Model.Count;
+                        for (int i = 0; i < count; i++)
+                        {
+                            <tr>
+                                <th scope="row">@(i + 1)</th>
+                                <td>@Model[i].Name</td>
+                                <td>@Model[i].AlbumName</td>
+                                <td>@Model[i].SingerName</td>
+                                <td>
+                                    <a href="@(Url.Action("GetFile",new{url=Model[i].DlUrl,musicName=Model[i].Name,singerName=Model[i].SingerName}))">点击下载</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

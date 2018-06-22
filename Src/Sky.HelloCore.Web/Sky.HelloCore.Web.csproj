@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.9.9.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,8 +18,15 @@
     <Reference Include="NewLife.Core">
       <HintPath>..\DLL\NewLife.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Sky.Common">
+      <HintPath>..\DLL\Sky.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Sky.Gallery">
       <HintPath>..\DLL\Sky.Gallery.dll</HintPath>
+    </Reference>
+    <Reference Include="Sky.KwMusicAnalysis">
+      <HintPath>..\DLL\Sky.KwMusicAnalysis.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="XCode">
       <HintPath>..\DLL\XCode.dll</HintPath>
