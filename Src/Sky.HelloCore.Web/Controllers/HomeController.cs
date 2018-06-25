@@ -58,7 +58,7 @@ namespace Sky.HelloCore.Web.Controllers
         }
 
         /// <summary>
-        /// 音悦台
+        /// 音悦台 todo:前台有表单提交改成异步获取，添加分页
         /// </summary>
         /// <returns></returns>
         public IActionResult Music(Pager pager)
@@ -93,7 +93,6 @@ namespace Sky.HelloCore.Web.Controllers
         /// <returns></returns>
         public IActionResult GetFile(string url, string musicName, string singerName)
         {
-            var des = new DESCryptoServiceProvider();
             var deUrl = Common.CEntrypt.Decode(url, Key);
             byte[] fileStream;
             using (var http = new WebClient())
@@ -104,6 +103,10 @@ namespace Sky.HelloCore.Web.Controllers
             return File(fileStream, "application/octet-stream", $"{musicName}-{singerName}.mp3");
         }
 
+        public IActionResult StoryDownload()
+        {
+            return View();
+        }
         /// <summary>
         /// 加密下载链接
         /// </summary>

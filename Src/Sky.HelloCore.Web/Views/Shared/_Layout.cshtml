@@ -32,11 +32,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">关于</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Gallery">画廊</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Music">音悦台</a></li>
                     <li><a href="https://ismatch.cn/" target="_blank">博客</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">联系我</a></li>
+                    <li><a href="http://139.199.207.128:3366/" target="_blank">代码库</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="StoryDownload">小说下载</a></li>
                 </ul>ti
             </div>
         </div>
@@ -71,5 +71,13 @@
     </environment>
 
     @RenderSection("scripts", required: false)
+    <script>
+        $(function() {
+            $('.navbar-nav li:last-child a').on('click', function() {
+                alert('正在开发中....');
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>
